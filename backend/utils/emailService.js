@@ -4,11 +4,11 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_APP_PASSWORD
+    pass: process.env.EMAIL_PASS
   }
 });
 
-const sendEmail = async (name, email, message) => {
+exports.sendContactNotification = async (name, email, message) => {
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
@@ -16,5 +16,3 @@ const sendEmail = async (name, email, message) => {
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
   });
 };
-
-module.exports = sendEmail;

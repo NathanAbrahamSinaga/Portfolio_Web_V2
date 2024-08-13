@@ -1,7 +1,13 @@
+const { validationResult } = require('express-validator');
 const Contact = require('../models/Contact');
-const sendEmail = require('../utils/emailService');
+const emailService = require('../utils/emailService');
 
-exports.submitContactForm = async (req, res) => {
+exports.submitContact = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   try {
     const { name, email, message } = req.body;
 
@@ -10,7 +16,7 @@ exports.submitContactForm = async (req, res) => {
     await newContact.save();
 
     // Send email
-    await sendEmail(name, email, message);
+    await emailService.sendContactNotification(name, email, message);
 
     res.status(200).json({ message: 'Message sent successfully' });
   } catch (error) {
