@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
-import axios from 'axios';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,12 +16,25 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await fetch('http://localhost:3000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Success:', data);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      setSubmitStatus('error');
       console.error('Error submitting form:', error);
+      setSubmitStatus('error');
     }
   };
 
