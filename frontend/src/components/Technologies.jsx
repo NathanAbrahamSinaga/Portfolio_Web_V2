@@ -102,7 +102,7 @@ const Technologies = () => {
           animate="animate"
           className="rounded-2xl border-4 border-neutral-800 p-4"
         >
-          <BiLogoPostgresql className="text-7xl text-blue-700" />
+          <BiLogoPostgresql className="text-7xl text-[#336791]" />
         </motion.div>
         <motion.div
           variants={iconVariant(7)}
