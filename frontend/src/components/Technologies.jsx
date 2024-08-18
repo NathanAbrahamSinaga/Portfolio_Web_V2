@@ -53,7 +53,7 @@ const Technologies = () => {
                 animate="animate"
                 className="rounded-2xl border-4 border-neutral-800 p-4"
             >
-                <RiTailwindCssFill className="text-7xl text-[#25f054]" />
+                <RiTailwindCssFill className="text-7xl text-cyan-400" />
             </motion.div>
             <motion.div 
                 variants={iconVariant(5)}
