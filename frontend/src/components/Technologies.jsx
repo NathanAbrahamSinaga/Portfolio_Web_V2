@@ -69,13 +69,16 @@ const Technologies = () => {
     { icon: SiExpress, colorClass: "text-white", duration: 3 },
     { icon: SiDjango, colorClass: "text-lime-500", duration: 2 },
     { icon: SiFlask, colorClass: "text-black", bgClass: "bg-neutral-200", duration: 4 },
-    { icon: SiMongodb, colorClass: "text-green-600", duration: 5 },
-    { icon: GrMysql, colorClass: "text-cyan-700", duration: 6 },
-    { icon: BiLogoPostgresql, colorClass: "text-[#336791]", duration: 3 },
   ];
 
   const dataScienceTechnologies = [
     { icon: SiScikitlearn, colorClass: "text-orange-600", duration: 3.5 },
+  ];
+
+  const databaseTechnologies = [
+    { icon: SiMongodb, colorClass: "text-green-600", duration: 5 },
+    { icon: GrMysql, colorClass: "text-cyan-700", duration: 6 },
+    { icon: BiLogoPostgresql, colorClass: "text-[#336791]", duration: 3 },
   ];
 
   return (
@@ -93,9 +96,10 @@ const Technologies = () => {
         initial={{ opacity: 0, x: -100 }}
         transition={{ duration: 1.5 }}
       >
+        <TechnologySection title="Data Science" technologies={dataScienceTechnologies} />
         <TechnologySection title="Frontend Web" technologies={frontendTechnologies} />
         <TechnologySection title="Backend Web" technologies={backendTechnologies} />
-        <TechnologySection title="Data Science" technologies={dataScienceTechnologies} />
+        <TechnologySection title="Database" technologies={databaseTechnologies} />
       </motion.div>
     </div>
   );
