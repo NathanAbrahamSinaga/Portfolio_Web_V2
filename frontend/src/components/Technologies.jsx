@@ -1,13 +1,8 @@
-import { RiReactjsLine } from "react-icons/ri";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { SiMongodb } from "react-icons/si";
+import { RiReactjsLine, RiTailwindCssFill, RiSvelteFill } from "react-icons/ri";
+import { SiMongodb, SiExpress, SiDjango, SiFlask, SiScikitlearn } from "react-icons/si";
 import { FaNodeJs } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
-import { SiDjango } from "react-icons/si";
 import { BiLogoPostgresql } from "react-icons/bi";
-import { RiSvelteFill } from "react-icons/ri";
-import { SiFlask, SiScikitlearn } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const iconVariant = (duration) => ({
@@ -23,7 +18,66 @@ const iconVariant = (duration) => ({
   },
 });
 
+const subtitleVariant = {
+  initial: { opacity: 0, y: -50 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: "easeOut",
+    },
+  },
+};
+
+const TechnologySection = ({ title, technologies }) => (
+  <div className="mb-16">
+    <motion.h3 
+      className="text-2xl mb-8 text-center"
+      variants={subtitleVariant}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+    >
+      {title}
+    </motion.h3>
+    <div className="flex flex-wrap items-center justify-center gap-4">
+      {technologies.map((tech, index) => (
+        <motion.div
+          key={index}
+          variants={iconVariant(tech.duration)}
+          initial="initial"
+          animate="animate"
+          className={`rounded-2xl border-4 border-neutral-800 p-4 ${tech.bgClass || ''}`}
+        >
+          <tech.icon className={`text-7xl ${tech.colorClass}`} />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+);
+
 const Technologies = () => {
+  const frontendTechnologies = [
+    { icon: RiReactjsLine, colorClass: "text-[#61DAFB]", duration: 2.5 },
+    { icon: RiTailwindCssFill, colorClass: "text-teal-500", duration: 3 },
+    { icon: RiSvelteFill, colorClass: "text-orange-600", duration: 7 },
+  ];
+
+  const backendTechnologies = [
+    { icon: FaNodeJs, colorClass: "text-green-700", duration: 2 },
+    { icon: SiExpress, colorClass: "text-white", duration: 3 },
+    { icon: SiDjango, colorClass: "text-lime-500", duration: 2 },
+    { icon: SiFlask, colorClass: "text-black", bgClass: "bg-neutral-200", duration: 4 },
+    { icon: SiMongodb, colorClass: "text-green-600", duration: 5 },
+    { icon: GrMysql, colorClass: "text-cyan-700", duration: 6 },
+    { icon: BiLogoPostgresql, colorClass: "text-[#336791]", duration: 3 },
+  ];
+
+  const dataScienceTechnologies = [
+    { icon: SiScikitlearn, colorClass: "text-orange-600", duration: 3.5 },
+  ];
+
   return (
     <div className="border-b border-neutral-800 pb-24">
       <motion.h2
@@ -38,96 +92,10 @@ const Technologies = () => {
         whileInView={{ opacity: 1, x: 0 }}
         initial={{ opacity: 0, x: -100 }}
         transition={{ duration: 1.5 }}
-        className="flex flex-wrap items-center justify-center gap-4"
       >
-        <motion.div
-          variants={iconVariant(2.5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <RiReactjsLine className="text-7xl text-[#61DAFB]" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(3)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <RiTailwindCssFill className="text-7xl text-teal-500" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <SiMongodb className="text-7xl text-green-600" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(2)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <FaNodeJs className="text-7xl text-green-700" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(3)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <SiExpress className="text-7xl text-white" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(6)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <GrMysql className="text-7xl text-cyan-700" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(2)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <SiDjango className="text-7xl text-lime-500" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(3)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <BiLogoPostgresql className="text-7xl text-[#336791]" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(7)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <RiSvelteFill className="text-7xl text-orange-600" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(4)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4 bg-neutral-200"
-        >
-          <SiFlask className="text-7xl text-black" />
-        </motion.div>
-        <motion.div
-          variants={iconVariant(3.5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <SiScikitlearn className="text-7xl text-orange-600" />
-        </motion.div>
+        <TechnologySection title="Frontend Web" technologies={frontendTechnologies} />
+        <TechnologySection title="Backend Web" technologies={backendTechnologies} />
+        <TechnologySection title="Data Science" technologies={dataScienceTechnologies} />
       </motion.div>
     </div>
   );
