@@ -96,10 +96,37 @@ const Technologies = () => {
         initial={{ opacity: 0, x: -100 }}
         transition={{ duration: 1.5 }}
       >
-        <TechnologySection title="Data Science" technologies={dataScienceTechnologies} />
-        <TechnologySection title="Frontend Web" technologies={frontendTechnologies} />
-        <TechnologySection title="Backend Web" technologies={backendTechnologies} />
-        <TechnologySection title="Database" technologies={databaseTechnologies} />
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <TechnologySection title="Data Science" technologies={dataScienceTechnologies} />
+        </motion.div>
+        
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
+          <TechnologySection title="Frontend Web" technologies={frontendTechnologies} />
+        </motion.div>
+        
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
+          <TechnologySection title="Backend Web" technologies={backendTechnologies} />
+        </motion.div>
+        
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          <TechnologySection title="Database" technologies={databaseTechnologies} />
+        </motion.div>
       </motion.div>
     </div>
   );
