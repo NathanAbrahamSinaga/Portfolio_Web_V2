@@ -21,7 +21,7 @@ const Navbar = () => {
       </div>
       <div className="m-8 flex items-center justify-center gap-4 text-2xl">
         <motion.a 
-          href="https://www.linkedin.com/in/nathan-abraham-sinaga-a122b8208" 
+          href="https://www.linkedin.com/in/nathan-a-a122b8208" 
           target="_blank" 
           rel="noopener noreferrer"
           whileHover="hover"
