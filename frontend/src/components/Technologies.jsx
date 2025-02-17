@@ -1,8 +1,4 @@
-import { RiReactjsLine, RiTailwindCssFill, RiSvelteFill } from "react-icons/ri";
-import { SiMongodb, SiExpress, SiDjango, SiFlask, SiScikitlearn } from "react-icons/si";
-import { FaNodeJs } from "react-icons/fa";
-import { GrMysql } from "react-icons/gr";
-import { BiLogoPostgresql } from "react-icons/bi";
+import { Icon } from '@iconify/react';
 import { motion } from "framer-motion";
 
 const iconVariant = (duration) => ({
@@ -50,7 +46,15 @@ const TechnologySection = ({ title, technologies }) => (
           animate="animate"
           className={`rounded-2xl border-4 border-neutral-800 p-4 ${tech.bgClass || ''}`}
         >
-          <tech.icon className={`text-7xl ${tech.colorClass}`} />
+          {tech.custom ? (
+            <img 
+              src={tech.icon} 
+              alt={tech.alt || 'icon'} 
+              className={`w-20 h-20 object-contain ${tech.colorClass}`} 
+            />
+          ) : (
+            <Icon icon={tech.icon} className={`text-7xl ${tech.colorClass}`} />
+          )}
         </motion.div>
       ))}
     </div>
@@ -58,27 +62,26 @@ const TechnologySection = ({ title, technologies }) => (
 );
 
 const Technologies = () => {
-  const frontendTechnologies = [
-    { icon: RiReactjsLine, colorClass: "text-[#61DAFB]", duration: 2.5 },
-    { icon: RiTailwindCssFill, colorClass: "text-teal-500", duration: 3 },
-    { icon: RiSvelteFill, colorClass: "text-orange-600", duration: 7 },
+  const dataAnalystTechnologies = [
+    { icon: "logos:python", colorClass: "text-blue-500", duration: 2 },
+    { icon: "logos:pandas", colorClass: "text-indigo-500", duration: 2.5 },
+    { icon: "logos:numpy", colorClass: "text-purple-500", duration: 3 },
+    { icon: "/icons/matplotlib.svg", colorClass: "", duration: 3.5, custom: true, alt: "Matplotlib" },
+    { icon: "/icons/seaborn.svg", colorClass: "", duration: 4, custom: true, alt: "Seaborn" },
+    { icon: "logos:scikitlearn", colorClass: "text-orange-600", duration: 3.5 },
   ];
 
-  const backendTechnologies = [
-    { icon: FaNodeJs, colorClass: "text-green-700", duration: 2 },
-    { icon: SiExpress, colorClass: "text-white", duration: 3 },
-    { icon: SiDjango, colorClass: "text-lime-500", duration: 2 },
-    { icon: SiFlask, colorClass: "text-black", bgClass: "bg-neutral-200", duration: 4 },
-  ];
-
-  const dataScienceTechnologies = [
-    { icon: SiScikitlearn, colorClass: "text-orange-600", duration: 3.5 },
+  const webDevelopmentTechnologies = [
+    { icon: "logos:tailwindcss", colorClass: "text-teal-500", duration: 3 },
+    { icon: "logos:react", colorClass: "text-[#61DAFB]", duration: 2.5 },
+    { icon: "logos:laravel", colorClass: "text-red-600", duration: 3.5 },
+    { icon: "logos:nodejs", colorClass: "text-green-700", duration: 2 },
   ];
 
   const databaseTechnologies = [
-    { icon: SiMongodb, colorClass: "text-green-600", duration: 5 },
-    { icon: GrMysql, colorClass: "text-cyan-700", duration: 6 },
-    { icon: BiLogoPostgresql, colorClass: "text-[#336791]", duration: 3 },
+    { icon: "logos:mysql", colorClass: "text-cyan-700", duration: 6 },
+    { icon: "logos:mongodb", colorClass: "text-green-600", duration: 5 },
+    { icon: "logos:postgresql", colorClass: "text-[#336791]", duration: 3 },
   ];
 
   return (
@@ -101,7 +104,7 @@ const Technologies = () => {
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <TechnologySection title="Data Science" technologies={dataScienceTechnologies} />
+          <TechnologySection title="Data Analyst" technologies={dataAnalystTechnologies} />
         </motion.div>
         
         <motion.div
@@ -109,21 +112,13 @@ const Technologies = () => {
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          <TechnologySection title="Frontend Web" technologies={frontendTechnologies} />
+          <TechnologySection title="Web Development" technologies={webDevelopmentTechnologies} />
         </motion.div>
         
         <motion.div
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.6 }}
-        >
-          <TechnologySection title="Backend Web" technologies={backendTechnologies} />
-        </motion.div>
-        
-        <motion.div
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1, delay: 0.8 }}
         >
           <TechnologySection title="Database" technologies={databaseTechnologies} />
         </motion.div>
