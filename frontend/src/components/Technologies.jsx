@@ -1,5 +1,12 @@
+import React from 'react';
 import { Icon } from '@iconify/react';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+
+import matplotlibLogo from '../assets/logos/matplotlib.svg';
+import seabornLogo from '../assets/logos/seaborn.svg';
+import tailwindsLogo from '../assets/logos/tailwinds.svg';
+import mongodbLogo from '../assets/logos/mongodb.svg';
+import scikitLearnLogo from '../assets/logos/scikitlearn.svg';
 
 const iconVariant = (duration) => ({
   initial: { y: -10 },
@@ -7,9 +14,9 @@ const iconVariant = (duration) => ({
     y: [10, -10],
     transition: {
       duration: duration,
-      ease: "linear",
+      ease: 'linear',
       repeat: Infinity,
-      repeatType: "reverse",
+      repeatType: 'reverse',
     },
   },
 });
@@ -21,7 +28,7 @@ const subtitleVariant = {
     y: 0,
     transition: {
       duration: 1,
-      ease: "easeOut",
+      ease: 'easeOut',
     },
   },
 };
@@ -63,25 +70,25 @@ const TechnologySection = ({ title, technologies }) => (
 
 const Technologies = () => {
   const dataAnalystTechnologies = [
-    { icon: "logos:python", colorClass: "text-blue-500", duration: 2 },
-    { icon: "logos:pandas", colorClass: "text-indigo-500", duration: 2.5 },
-    { icon: "logos:numpy", colorClass: "text-purple-500", duration: 3 },
-    { icon: "/icons/matplotlib.svg", colorClass: "", duration: 3.5, custom: true, alt: "Matplotlib" },
-    { icon: "/icons/seaborn.svg", colorClass: "", duration: 4, custom: true, alt: "Seaborn" },
-    { icon: "logos:scikitlearn", colorClass: "text-orange-600", duration: 3.5 },
+    { icon: 'logos:python', colorClass: 'text-blue-500', duration: 2 },
+    { icon: 'logos:pandas', colorClass: 'text-indigo-500', duration: 2.5 },
+    { icon: 'logos:numpy', colorClass: 'text-purple-500', duration: 3 },
+    { icon: matplotlibLogo, colorClass: '', duration: 3.5, custom: true},
+    { icon: seabornLogo, colorClass: '', duration: 4, custom: true},
+    { icon: scikitLearnLogo, colorClass: 'text-orange-600', duration: 3.5, custom:true },
   ];
 
   const webDevelopmentTechnologies = [
-    { icon: "logos:tailwindcss", colorClass: "text-teal-500", duration: 3 },
-    { icon: "logos:react", colorClass: "text-[#61DAFB]", duration: 2.5 },
-    { icon: "logos:laravel", colorClass: "text-red-600", duration: 3.5 },
-    { icon: "logos:nodejs", colorClass: "text-green-700", duration: 2 },
+    { icon: tailwindsLogo, colorClass: 'text-teal-500', duration: 3, custom: true },
+    { icon: 'logos:react', colorClass: 'text-[#61DAFB]', duration: 2.5 },
+    { icon: 'logos:laravel', colorClass: 'text-red-600', duration: 3.5 },
+    { icon: 'logos:nodejs', colorClass: 'text-green-700', duration: 2 },
   ];
 
   const databaseTechnologies = [
-    { icon: "logos:mysql", colorClass: "text-cyan-700", duration: 6 },
-    { icon: "logos:mongodb", colorClass: "text-green-600", duration: 5 },
-    { icon: "logos:postgresql", colorClass: "text-[#336791]", duration: 3 },
+    { icon: 'logos:mysql', colorClass: 'text-cyan-700', duration: 6 },
+    { icon: mongodbLogo, colorClass: 'text-green-600', duration: 5, custom: true },
+    { icon: 'logos:postgresql', colorClass: 'text-[#336791]', duration: 3 },
   ];
 
   return (
